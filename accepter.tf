@@ -76,7 +76,7 @@ locals {
   #accepter_cidr_block_associations       = try(flatten(data.aws_vpc.accepter.*.cidr_block_associations), [])
   accepter_cidr_block_associations       = try(flatten(tolist(setsubtract([
     for k,v in data.aws_vpc.accepter[0].cidr_block_associations : v.cidr_block
-    ], ["100.64.0.0"]))), [])
+    ], ["100.64.0.0/16"]))), [])
   accepter_cidr_block_associations_count = length(local.accepter_cidr_block_associations)
 }
 
