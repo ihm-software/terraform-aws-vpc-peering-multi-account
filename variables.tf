@@ -69,6 +69,18 @@ variable "accepter_allow_remote_vpc_dns_resolution" {
   description = "Allow accepter VPC to resolve public DNS hostnames to private IP addresses when queried from instances in the requester VPC"
 }
 
+variable "accepter_ignore_cidrs" {
+  type        = list(string)
+  description = "A list of CIDR blocks from the accepter VPC to ignore"
+  default     = []
+}
+
+variable "requester_ignore_cidrs" {
+  type        = list(string)
+  description = "A list of CIDR blocks from the requester VPC to ignore"
+  default     = []
+}
+
 variable "skip_metadata_api_check" {
   type        = bool
   default     = false
