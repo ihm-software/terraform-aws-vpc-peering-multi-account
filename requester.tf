@@ -162,7 +162,7 @@ locals {
   # requester_cidr_block_associations       = flatten(data.aws_vpc.requester.*.cidr_block_associations)
   requester_cidr_block_associations       = flatten(tolist(setsubtract([ 
     for k,v in data.aws_vpc.requester[0].cidr_block_associations : v.cidr_block
-    ], "100.64.0.0")))
+    ], ["100.64.0.0"])))
   requester_cidr_block_associations_count = length(local.requester_cidr_block_associations)
 }
 
